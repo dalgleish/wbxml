@@ -1,0 +1,33 @@
+{
+  "name": "wbxml",
+  "description": "Javascript encoder/decoder for WAP Binary XML Content Format. See www.w3.org/TR/wbxml for spec.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Andrew Dalgleish",
+    "email": "andrew@dalgleish.info",
+    "url": "http://andrew.dalgleish.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/metafedora/wbxml"
+  },
+  "dependencies": {
+    "readable-stream": "1.0.x"
+  },
+  "devDependencies": {
+    "nodeunit": "latest"
+  },
+  "scripts": {
+    "test": "nodeunit test"
+  },
+  "main": "./lib/index",
+  "keywords": [
+    "wbxml",
+    "wap",
+    "binary",
+    "xml",
+    "stream"
+  ],
+  "license": "BSD",
+  "bugs": "https://github.com/metafedora/wbxml/issues"
+}
