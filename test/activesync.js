@@ -331,6 +331,27 @@ var namespaces = [
   'RightsManagement'
 ];
 
+function annotate(){
+  var page
+    , value
+    , i;
+
+  // key is radix 16 (hexadecimal)
+  var setPageValue = function(key) {
+    value = page[key];
+    page[value] = parseInt(key, 10);
+  };
+
+  for(i = 0; i < codepages.length; i++) {
+    page = codepages[i]; // Object
+    Object
+      .keys(page)// 0x05, 0x06, etc.
+      .forEach(setPageValue);
+  }
+}
+
+annotate();
+
 module.exports.codepages = codepages;
 module.exports.namespaces = namespaces;
 
