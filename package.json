@@ -15,10 +15,10 @@
     "readable-stream": "1.0.x"
   },
   "devDependencies": {
-    "nodeunit": "latest"
+    "mocha": "1.12.x"
   },
   "scripts": {
-    "test": "nodeunit test"
+    "test": "./node_modules/.bin/mocha -R spec"
   },
   "main": "./lib/index",
   "keywords": [
@@ -29,5 +29,8 @@
     "stream"
   ],
   "license": "BSD",
-  "bugs": "https://github.com/metafedora/wbxml/issues"
+  "bugs": "https://github.com/metafedora/wbxml/issues",
+  "engines": {
+    "node": ">=0.8.0"
+  }
 }

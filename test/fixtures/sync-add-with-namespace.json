@@ -1,0 +1,26 @@
+{
+  "Sync": {
+    "Collections": {
+      "Collection": {
+        "Class": "Contacts",
+        "SyncKey": "2",
+        "CollectionId": "2",
+        "Status": "1",
+        "Commands": {
+          "Add": {
+            "ServerId": "2:1",
+            "ApplicationData": {
+              "AirSyncBase:Body": {
+                "Type": "1",
+                "EstimatedDataSize": "0",
+                "Truncated": "1"
+              },
+              "Settings:AccountName":[ "Funk, Don", "Don","Funk" ],
+              "AirSyncBase:NativeBodyType": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}

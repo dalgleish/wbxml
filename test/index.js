@@ -1,137 +1,175 @@
-var wbxml = require('../lib/index');
-var codepages = require('./activesync').codepages;
-var namespaces = require('./activesync').namespaces;
+var assert = require('assert'),
+    wbxml = require('../lib/index'),
+    fs = require('fs'),
+    activesync = require('./activesync'),
+    codepages = activesync.codepages,
+    namespaces = activesync.namespaces;
 
-exports.decode = {
-  "decode empty element" : function(t) {
-    var encoded = [0x03, 0x01, 0x6A, 0x00, 0x05, 0x01];
-    var buffer = new Buffer(encoded);
+describe('decode without callback', function() {
+  it('foldersync with synckey 0', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}),
+      fstream = fs.createReadStream(__dirname + '/fixtures/folder-sync-init-request.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request.json', {encoding: 'utf8'}));
 
-    var decoder = new wbxml.Decoder({
+    decoder.on('readable', function () {
+      var obj = decoder.read();
+      assert.deepEqual(obj, json);
+    })
+
+    decoder.on('end', function () {
+      done();
+    })
+
+    fstream.pipe(decoder);
+  })
+
+  it('sync with add command', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}),
+      fstream = fs.createReadStream(__dirname + '/fixtures/sync-add.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add.json', {encoding: 'utf8'}));
+
+    decoder.on('readable', function () {
+      var obj = decoder.read();
+      assert.deepEqual(obj, json);
+    })
+
+    decoder.on('end', function () {
+      done();
+    })
+
+    fstream.pipe(decoder);
+  })
+})
+
+describe('decode with callback', function() {
+  it('foldersync with synckey 0', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}, cb),
+      fstream = fs.createReadStream(__dirname + '/fixtures/folder-sync-init-request.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request.json', {encoding: 'utf8'}));
+
+    function cb (err, obj) {
+      if (err) throw err;
+      assert.deepEqual(obj, json);
+      done()
+    }
+
+    fstream.pipe(decoder)
+  })
+
+  it('sync with add command', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}, cb),
+      fstream = fs.createReadStream(__dirname + '/fixtures/sync-add.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add.json', {encoding: 'utf8'}));
+
+    function cb (err, obj) {
+      if (err) throw err;
+      assert.deepEqual(obj, json);
+      done()
+    }
+
+    fstream.pipe(decoder)
+  })
+})
+
+describe('encode without callback', function() {
+  it('foldersync with synckey 0', function (done) {
+
+    var encoder = wbxml.Encoder({
       codepages: codepages,
-      objectMode: true
+      namespaces: namespaces
     });
 
-    decoder.write(buffer);
-    var res = decoder.read();
+    var correct = fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request-with-namespace.json', {encoding: 'utf8'}));
 
-    decoder.end();
-
-    process.nextTick(function() {
-      t.done();
-    })
-  },
-  "decode simple" : function(t) {
-    var input = new Buffer([0x03, 0x01, 0x6A, 0x00, 0x00, 0x07, 0x56, 0x52, 0x03, 0x30, 0x00, 0x01, 0x01]);
-
-    var correct = {
-      'FolderSync': {
-        'SyncKey': '0'
+    encoder.on('readable', function () {
+      var buffer = encoder.read();
+      for(var i = 0; i < correct.length; i++){
+        assert.equal(buffer[i], correct[i]);
       }
-    };
+    })
 
-    var decoder = new wbxml.Decoder({
+    encoder.on('end', function () {
+      done();
+    })
+
+    encoder.write(json);
+    encoder.end()
+  })
+
+  it('sync with add command', function (done) {
+
+    var encoder = wbxml.Encoder({
       codepages: codepages,
-      objectMode: true
+      namespaces: namespaces
     });
 
-    var result;
+    var correct = fs.readFileSync(__dirname + '/fixtures/sync-add.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add-with-namespace.json', {encoding: 'utf8'}));
 
-    decoder.write(input);
-    result = decoder.read();
-
-    decoder.end();
-
-    process.nextTick(function() {
-      t.deepEqual(result, correct);
-      t.done();
-    })
-  },
-  "decode complex" : function(t) {
-    var input = new Buffer([0x03, 0x01, 0x6A, 0x00, 0x45, 0x5C, 0x4F, 0x50, 0x03, 0x43, 0x6F, 0x6E, 0x74,
-      0x61, 0x63, 0x74, 0x73, 0x00, 0x01, 0x4B, 0x03, 0x32, 0x00, 0x01, 0x52, 0x03,
-      0x32, 0x00, 0x01, 0x4E, 0x03, 0x31, 0x00, 0x01, 0x56, 0x47, 0x4D, 0x03, 0x32,
-      0x3A, 0x31, 0x00, 0x01, 0x5D, 0x00, 0x11, 0x4A, 0x46, 0x03, 0x31, 0x00, 0x01,
-      0x4C, 0x03, 0x30, 0x00, 0x01, 0x4D, 0x03, 0x31, 0x00, 0x01, 0x01, 0x00, 0x12,
-      0x67, 0x03, 0x46, 0x75, 0x6E, 0x6B, 0x2C, 0x20, 0x44, 0x6F, 0x6E, 0x00, 0x01,
-      0x67, 0x03, 0x44, 0x6F, 0x6E, 0x00, 0x01, 0x67, 0x03, 0x46, 0x75, 0x6E, 0x6B,
-      0x00, 0x01, 0x00, 0x11, 0x56, 0x03, 0x31, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01,
-      0x01, 0x01]);
-
-    var correct = {
-      'Sync': {
-        Collections: {
-          Collection: {
-            Class: 'Contacts',
-            SyncKey: '2',
-            CollectionId: '2',
-            Status: '1',
-            Commands:
-            {
-              Add: {
-                ServerId: '2:1',
-                ApplicationData: {
-                  'Body': {
-                    Type: '1',
-                    EstimatedDataSize: '0',
-                    Truncated: '1'
-                  },
-                  'AccountName':[ 'Don','Funk','Funk, Don' ],
-                  'NativeBodyType': '1'
-                }
-              }
-            }
-          }
+    encoder.on('readable', function () {
+      var buffer = encoder.read();
+      var out = '';
+      for(var i = 0; i < correct.length; i++){
+        out += (' ' + buffer[i].toString(16));
+        if (buffer[i] !== correct[i]) {
+          console.log(out)
+          console.log('failed at ', i)
         }
+        assert.equal(buffer[i], correct[i]);
       }
-    };
-
-    var decoder = new wbxml.Decoder({
-      codepages: codepages,
-      objectMode: true
-    });
-
-    decoder.write(input);
-    result = decoder.read();
-
-    decoder.end();
-
-    process.nextTick(function() {
-      t.deepEqual(result, correct);
-      t.done();
+      console.log(out)
     })
-  },
-  "encode simple" : function(t) {
 
-    var input = {
-      'FolderHierarchy:FolderSync': {
-        'SyncKey': '0'
-      }
-    };
+    encoder.on('end', function () {
+      done();
+    })
 
-    var correct = [0x03, 0x01, 0x6A, 0x00, 0x00, 0x07, 0x56, 0x52, 0x03, 0x30, 0x00, 0x01, 0x01, 0x00, 0x00];
+    encoder.write(json);
+    encoder.end()
+  })
+})
 
-    var encoder = new wbxml.Encoder({
+describe('encode with callback', function() {
+  it('foldersync with synckey 0', function (done) {
+    var encoder = wbxml.Encoder({
       codepages: codepages,
-      namespaces: namespaces,
-      objectMode: true
-    });
+      namespaces: namespaces
+    }, cb);
 
-    encoder.write(input);
+    var correct = fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/folder-sync-init-request-with-namespace.json', {encoding: 'utf8'}));
 
-    var result = encoder.read();
-
-
-    encoder.on('finish', function() {
-      var xxx = [];
-      for(var i = 0; i < result.length; i++){
-        xxx.push(result[i]);
+    function cb (err, buffer) {
+      if (err) throw err;
+      for(var i = 0; i < correct.length; i++){
+        assert.equal(buffer[i], correct[i]);
       }
+      done()
+    }
 
-      t.deepEqual(xxx, correct);
-      t.done();
-    });
+    encoder.write(json);
+    encoder.end()
+  })
 
-    encoder.end();
-  }
-};
+  it('sync with add command', function (done) {
+    var encoder = wbxml.Encoder({
+      codepages: codepages,
+      namespaces: namespaces
+    }, cb);
+
+    var correct = fs.readFileSync(__dirname + '/fixtures/sync-add.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add-with-namespace.json', {encoding: 'utf8'}));
+
+    function cb (err, buffer) {
+      if (err) throw err;
+      for(var i = 0; i < correct.length; i++){
+        assert.equal(buffer[i], correct[i]);
+      }
+      done()
+    }
+
+    encoder.write(json);
+    encoder.end()
+  })
+})

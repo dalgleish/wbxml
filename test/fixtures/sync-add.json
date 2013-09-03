@@ -1,0 +1,26 @@
+{
+  "Sync": {
+    "Collections": {
+      "Collection": {
+        "Class": "Contacts",
+        "SyncKey": "2",
+        "CollectionId": "2",
+        "Status": "1",
+        "Commands": {
+          "Add": {
+            "ServerId": "2:1",
+            "ApplicationData": {
+              "Body": {
+                "Type": "1",
+                "EstimatedDataSize": "0",
+                "Truncated": "1"
+              },
+              "AccountName":[ "Don","Funk","Funk, Don" ],
+              "NativeBodyType": "1"
+            }
+          }
+        }
+      }
+    }
+  }
+}
