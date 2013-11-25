@@ -1,0 +1,29 @@
+{
+  "ItemOperations": {
+    "Status": "1",
+    "Response": {
+      "Fetch": {
+        "Status": "1",
+        "CollectionId": "1:AHApGqUqePFJmJ2RaEV2H2/TSX3s7gImT4AvBWwiEOhm",
+        "ServerId": "1:qqbwn4vjKUGwtiQNr1VrGA==",
+        "Properties": {
+          "AllDayEvent": "0",
+          "Body": {
+            "Type": "1",
+            "Data": null
+          },
+          "BusyStatus": "2",
+          "Subject": "delete me",
+          "MeetingStatus": "0",
+          "Sensitivity": "0",
+          "Reminder": "15",
+          "UID": "9ff0a6aa-e38b-4129-b0b6-240daf556b18",
+          "TimeZone": "LAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAACAAIAAAAAAAAAxP///w==",
+          "StartTime": "20131127T140000Z",
+          "EndTime": "20131127T150000Z",
+          "DtStamp": "20131125T205642Z"
+        }
+      }
+    }
+  }
+}
