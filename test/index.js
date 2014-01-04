@@ -39,6 +39,23 @@ describe('decode without callback', function() {
 
     fstream.pipe(decoder);
   })
+
+  it('itemoperations with null body', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}),
+      fstream = fs.createReadStream(__dirname + '/fixtures/calendar-item-with-null-body.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body.json', {encoding: 'utf8'}));
+
+    decoder.on('readable', function () {
+      var obj = decoder.read();
+      assert.deepEqual(obj, json);
+    })
+
+    decoder.on('end', function () {
+      done();
+    })
+
+    fstream.pipe(decoder);
+  })
 })
 
 describe('decode with callback', function() {
@@ -60,6 +77,20 @@ describe('decode with callback', function() {
     var decoder = wbxml.Decoder({codepages: codepages}, cb),
       fstream = fs.createReadStream(__dirname + '/fixtures/sync-add.hex'),
       json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add.json', {encoding: 'utf8'}));
+
+    function cb (err, obj) {
+      if (err) throw err;
+      assert.deepEqual(obj, json);
+      done()
+    }
+
+    fstream.pipe(decoder)
+  })
+
+  it('itemoperations with null body', function (done) {
+    var decoder = wbxml.Decoder({codepages: codepages}, cb),
+      fstream = fs.createReadStream(__dirname + '/fixtures/calendar-item-with-null-body.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body.json', {encoding: 'utf8'}));
 
     function cb (err, obj) {
       if (err) throw err;
@@ -128,6 +159,38 @@ describe('encode without callback', function() {
     encoder.write(json);
     encoder.end()
   })
+
+  it('itemoperations with null body', function (done) {
+
+    var encoder = wbxml.Encoder({
+      codepages: codepages,
+      namespaces: namespaces
+    });
+
+    var correct = fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body-with-namespace.json', {encoding: 'utf8'}));
+
+    encoder.on('readable', function () {
+      var buffer = encoder.read();
+      var out = '';
+      for(var i = 0; i < correct.length; i++){
+        out += (' ' + buffer[i].toString(16));
+        if (buffer[i] !== correct[i]) {
+          console.log(out)
+          console.log('failed at ', i)
+        }
+        assert.equal(buffer[i], correct[i]);
+      }
+      console.log(out)
+    })
+
+    encoder.on('end', function () {
+      done();
+    })
+
+    encoder.write(json);
+    encoder.end()
+  })
 })
 
 describe('encode with callback', function() {
@@ -160,6 +223,27 @@ describe('encode with callback', function() {
 
     var correct = fs.readFileSync(__dirname + '/fixtures/sync-add.hex'),
       json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/sync-add-with-namespace.json', {encoding: 'utf8'}));
+
+    function cb (err, buffer) {
+      if (err) throw err;
+      for(var i = 0; i < correct.length; i++){
+        assert.equal(buffer[i], correct[i]);
+      }
+      done()
+    }
+
+    encoder.write(json);
+    encoder.end()
+  })
+
+  it('itemoperations with null body', function (done) {
+    var encoder = wbxml.Encoder({
+      codepages: codepages,
+      namespaces: namespaces
+    }, cb);
+
+    var correct = fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body.hex'),
+      json = JSON.parse(fs.readFileSync(__dirname + '/fixtures/calendar-item-with-null-body-with-namespace.json', {encoding: 'utf8'}));
 
     function cb (err, buffer) {
       if (err) throw err;

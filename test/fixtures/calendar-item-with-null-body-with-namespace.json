@@ -1,0 +1,29 @@
+{
+  "ItemOperations:ItemOperations": {
+    "Status": "1",
+    "Response": {
+      "Fetch": {
+        "Status": "1",
+        "AirSync:CollectionId": "1:AHApGqUqePFJmJ2RaEV2H2/TSX3s7gImT4AvBWwiEOhm",
+        "AirSync:ServerId": "1:qqbwn4vjKUGwtiQNr1VrGA==",
+        "ItemOperations:Properties": {
+          "Calendar:AllDayEvent": "0",
+          "AirSyncBase:Body": {
+            "AirSyncBase:Type": "1",
+            "AirSyncBase:Data": null
+          },
+          "Calendar:BusyStatus": "2",
+          "Calendar:Subject": "delete me",
+          "Calendar:MeetingStatus": "0",
+          "Calendar:Sensitivity": "0",
+          "Calendar:Reminder": "15",
+          "Calendar:UID": "9ff0a6aa-e38b-4129-b0b6-240daf556b18",
+          "Calendar:TimeZone": "LAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAACAAIAAAAAAAAAxP///w==",
+          "Calendar:StartTime": "20131127T140000Z",
+          "Calendar:EndTime": "20131127T150000Z",
+          "Calendar:DtStamp": "20131125T205642Z"
+        }
+      }
+    }
+  }
+}
