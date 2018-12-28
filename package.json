@@ -1,25 +1,18 @@
 {
   "name": "wbxml",
   "description": "Javascript encoder/decoder for WAP Binary XML Content Format. See www.w3.org/TR/wbxml for spec.",
-  "version": "0.0.1",
+  "version": "1.0.0-beta",
   "author": {
     "name": "Andrew Dalgleish",
     "email": "andrew@dalgleish.info",
-    "url": "http://andrew.dalgleish.info"
+    "url": "https://dalgleish.info"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/metafedora/wbxml"
-  },
-  "dependencies": {
-    "readable-stream": "1.0.x",
-    "traverse": "~0.6.5"
-  },
-  "devDependencies": {
-    "mocha": "1.12.x"
+    "url": "git://github.com/dalgleish/wbxml"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R spec"
+    "test": "mocha"
   },
   "main": "./lib/index",
   "keywords": [
@@ -30,8 +23,14 @@
     "stream"
   ],
   "license": "BSD",
-  "bugs": "https://github.com/metafedora/wbxml/issues",
+  "bugs": "https://github.com/dalgleish/wbxml/issues",
   "engines": {
     "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "eslint": "5.11.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "mocha": "5.2.0"
   }
 }
