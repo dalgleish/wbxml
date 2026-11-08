@@ -1,5 +1,8 @@
 # wbxml
 
+[![npm version](https://img.shields.io/npm/v/wbxml)](https://www.npmjs.com/package/wbxml)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/dalgleish/wbxml/ci.yml)](https://github.com/dalgleish/wbxml/actions)
+
 Zero-dependency WBXML (WAP Binary XML) decoder and encoder for Node.js, with a built-in Exchange ActiveSync language table.
 
 ## `decode(bytes, table)`
