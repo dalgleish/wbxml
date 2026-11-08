@@ -1,0 +1,247 @@
+{
+  "type": "document",
+  "version": "1.3",
+  "publicId": 1,
+  "charset": 106,
+  "children": [
+    {
+      "type": "element",
+      "namespace": "ItemOperations",
+      "name": "ItemOperations",
+      "attributes": [],
+      "children": [
+        {
+          "type": "element",
+          "namespace": "ItemOperations",
+          "name": "Status",
+          "attributes": [],
+          "children": [
+            {
+              "type": "text",
+              "value": "1"
+            }
+          ]
+        },
+        {
+          "type": "element",
+          "namespace": "ItemOperations",
+          "name": "Response",
+          "attributes": [],
+          "children": [
+            {
+              "type": "element",
+              "namespace": "ItemOperations",
+              "name": "Fetch",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "element",
+                  "namespace": "ItemOperations",
+                  "name": "Status",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "CollectionId",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1:AHApGqUqePFJmJ2RaEV2H2/TSX3s7gImT4AvBWwiEOhm"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "ServerId",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1:qqbwn4vjKUGwtiQNr1VrGA=="
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "ItemOperations",
+                  "name": "Properties",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "AllDayEvent",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "AirSyncBase",
+                      "name": "Body",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "element",
+                          "namespace": "AirSyncBase",
+                          "name": "Type",
+                          "attributes": [],
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "namespace": "AirSyncBase",
+                          "name": "Data",
+                          "attributes": [],
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "BusyStatus",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "Subject",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "delete me"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "MeetingStatus",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "Sensitivity",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "0"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "Reminder",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "15"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "UID",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "9ff0a6aa-e38b-4129-b0b6-240daf556b18"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "Timezone",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "LAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAsAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAACAAIAAAAAAAAAxP///w=="
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "StartTime",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "20131127T140000Z"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "EndTime",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "20131127T150000Z"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "element",
+                      "namespace": "Calendar",
+                      "name": "DtStamp",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "20131125T205642Z"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

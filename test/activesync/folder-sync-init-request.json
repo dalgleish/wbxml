@@ -1,0 +1,28 @@
+{
+  "type": "document",
+  "version": "1.3",
+  "publicId": 1,
+  "charset": 106,
+  "children": [
+    {
+      "type": "element",
+      "namespace": "FolderHierarchy",
+      "name": "FolderSync",
+      "attributes": [],
+      "children": [
+        {
+          "type": "element",
+          "namespace": "FolderHierarchy",
+          "name": "SyncKey",
+          "attributes": [],
+          "children": [
+            {
+              "type": "text",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

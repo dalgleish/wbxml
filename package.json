@@ -1,36 +1,53 @@
 {
   "name": "wbxml",
-  "description": "Javascript encoder/decoder for WAP Binary XML Content Format. See www.w3.org/TR/wbxml for spec.",
-  "version": "1.0.0-beta",
+  "version": "2.0.0",
+  "description": "Zero-dependency WBXML (WAP Binary XML) encoder and decoder for Node.js",
   "author": {
     "name": "Andrew Dalgleish",
-    "email": "andrew@dalgleish.info",
     "url": "https://dalgleish.info"
   },
+  "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dalgleish/wbxml"
+    "url": "git+https://github.com/dalgleish/wbxml.git"
   },
-  "scripts": {
-    "test": "mocha"
-  },
-  "main": "./lib/index",
+  "bugs": "https://github.com/dalgleish/wbxml/issues",
   "keywords": [
     "wbxml",
     "wap",
     "binary",
     "xml",
-    "stream"
+    "activesync"
   ],
-  "license": "BSD",
-  "bugs": "https://github.com/dalgleish/wbxml/issues",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./activesync": {
+      "types": "./lib/activesync/index.d.ts",
+      "default": "./lib/activesync/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "lib/*.d.ts",
+    "lib/activesync/index.js",
+    "lib/activesync/index.d.ts"
+  ],
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test \"test/*.test.js\" \"test/activesync/*.test.js\"",
+    "test:types": "tsc -p .",
+    "check:package": "npx --yes publint@0.3.12 && npx --yes @arethetypeswrong/cli@0.18.5 --pack --profile esm-only",
+    "prepublishOnly": "npm run check:package && npm test && npm run test:types"
   },
   "devDependencies": {
-    "eslint": "5.11.1",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.14.0",
-    "mocha": "5.2.0"
+    "typescript": "5.9.3"
   }
 }

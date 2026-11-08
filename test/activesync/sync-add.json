@@ -1,0 +1,208 @@
+{
+  "type": "document",
+  "version": "1.3",
+  "publicId": 1,
+  "charset": 106,
+  "children": [
+    {
+      "type": "element",
+      "namespace": "AirSync",
+      "name": "Sync",
+      "attributes": [],
+      "children": [
+        {
+          "type": "element",
+          "namespace": "AirSync",
+          "name": "Collections",
+          "attributes": [],
+          "children": [
+            {
+              "type": "element",
+              "namespace": "AirSync",
+              "name": "Collection",
+              "attributes": [],
+              "children": [
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "Class",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Contacts"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "SyncKey",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "CollectionId",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "2"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "Status",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "1"
+                    }
+                  ]
+                },
+                {
+                  "type": "element",
+                  "namespace": "AirSync",
+                  "name": "Commands",
+                  "attributes": [],
+                  "children": [
+                    {
+                      "type": "element",
+                      "namespace": "AirSync",
+                      "name": "Add",
+                      "attributes": [],
+                      "children": [
+                        {
+                          "type": "element",
+                          "namespace": "AirSync",
+                          "name": "ServerId",
+                          "attributes": [],
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "2:1"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "element",
+                          "namespace": "AirSync",
+                          "name": "ApplicationData",
+                          "attributes": [],
+                          "children": [
+                            {
+                              "type": "element",
+                              "namespace": "AirSyncBase",
+                              "name": "Body",
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "element",
+                                  "namespace": "AirSyncBase",
+                                  "name": "Type",
+                                  "attributes": [],
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "1"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "namespace": "AirSyncBase",
+                                  "name": "EstimatedDataSize",
+                                  "attributes": [],
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "0"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "element",
+                                  "namespace": "AirSyncBase",
+                                  "name": "Truncated",
+                                  "attributes": [],
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "1"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "namespace": "Settings",
+                              "name": "AccountName",
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Funk, Don"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "namespace": "Settings",
+                              "name": "AccountName",
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Don"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "namespace": "Settings",
+                              "name": "AccountName",
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "Funk"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "element",
+                              "namespace": "AirSyncBase",
+                              "name": "NativeBodyType",
+                              "attributes": [],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "1"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
