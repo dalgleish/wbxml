@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 
 // WBXML_SEED=random picks a seed and prints it, so that a failing run can be replayed.
 const seedIn = (value) => {
-  const run = spawnSync(process.execPath, ['--input-type=module', '-e', "import { SEED } from './test/helpers.js'; console.log(SEED);"], {
+  const run = spawnSync(process.execPath, ['--input-type=module', '-e', "import { SEED } from './test/helpers.js'; process.stdout.write(String(SEED));"], {
     cwd: new URL('..', import.meta.url),
     env: { ...process.env, WBXML_SEED: value },
     encoding: 'utf8',
