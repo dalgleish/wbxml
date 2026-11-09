@@ -5,6 +5,5 @@
    `WBXML_RUNS=1000000 WBXML_SEED=random npm test`
    Turn any crasher into a named vector before releasing.
 3. `npm pack --dry-run` lists only `lib/*.js`, `lib/*.d.ts`, each language's table module and `.d.ts`, plus `package.json`, `README.md` and `LICENSE`.
-4. Publish from an npm account that maintains `wbxml` (today only `metafedora`). `prepublishOnly` runs `check:package`, `test` and `test:types`.
-
-Open: npm provenance and `publishConfig`.
+4. Dry-run Publish from an npm account that maintains `wbxml`. To preview, use `npm publish --dry-run --ignore-scripts`: without `--ignore-scripts`, attw's internal `npm pack` inherits the dry run, writes no tarball and fails with `ENOENT`.
+5. Finally publish with `npm publish`
